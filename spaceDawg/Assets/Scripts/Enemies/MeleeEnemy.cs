@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class MeleeEnemy : MonoBehaviour
 {
-    //Enemy Attack
+    [Header("Attack Parameters")]
     [SerializeField] private float attackCoolDown;
     [SerializeField] private int damage;
-
-    //Enemy line of sight 
     [SerializeField] private float range;
-    [SerializeField] private float colliderDistance;
 
-    //Enemy's line of sight 
+    [Header("Collider Parameters")]
+    [SerializeField] private float colliderDistance;
+    //Enemy's line of sight
     [SerializeField] private BoxCollider2D boxCollider;
 
-    //Layer which Enemy is on
+    [Header("Player Layer")]
     [SerializeField] private LayerMask playerLayer;
-
     private float coolDownTimer = Mathf.Infinity;
 
     //References
     private Animator anim;
     private Health playerHealth;
 
+    private EnemyPatrol enemyPatrol;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        enemyPatrol = GetComponent<EnemyPatrol>();
     }
 
 
@@ -34,13 +35,21 @@ public class MeleeEnemy : MonoBehaviour
     {
         coolDownTimer += Time.deltaTime;
 
-        //Attack hen player is only in sight.
-        if(coolDownTimer >= attackCoolDown)
+
+        if (PlayerInSight())
         {
-            //Attack
-            coolDownTimer = 0;
+            //Attack hen player is only in sight.
+            if (coolDownTimer >= attackCoolDown)
+            {
+                Debug.Log("Hit");
+                //Attack
+                coolDownTimer = 0;
+                DamagePlayer();
+            }
         }
 
+        if (enemyPatrol != null)
+            enemyPatrol.enabled = !PlayerInSight();
     }
 
     private bool PlayerInSight()
@@ -48,11 +57,11 @@ public class MeleeEnemy : MonoBehaviour
         RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
             0,
-            Vector2.left, 
+            Vector2.left,
             0,
             playerLayer);
 
-        if(hit.collider != null)
+        if (hit.collider != null)
         {
             playerHealth = hit.transform.GetComponent<Health>();
         }
@@ -70,7 +79,7 @@ public class MeleeEnemy : MonoBehaviour
     private void DamagePlayer()
     {
         //Player will take damage if its in sight. 
-        if (PlayerInSight()) 
+        if (PlayerInSight())
         {
             //Damage Player health
             playerHealth.TakeDamage(damage);

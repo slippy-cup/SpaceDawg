@@ -61,6 +61,11 @@ public class Projectile : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+        if(collision.tag == "Enemy")
+        {
+            collision.GetComponent<Health>().TakeDamage(1);
+        }
+
     }
 
     //Sets the direction of the projectile

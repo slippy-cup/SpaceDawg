@@ -15,7 +15,11 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private float speed;
 
     private Vector3 initScale;
-    private bool movingLeft; 
+    private bool movingLeft;
+
+    [Header("Idle Behavior")]
+    [SerializeField] private float idleDuration;
+    private float idleTimer; 
 
     private void Awake()
     {
@@ -55,14 +59,23 @@ public class EnemyPatrol : MonoBehaviour
 
     private void DirectionChnage()
     {
-        //negates the value of moving left
-        movingLeft = !movingLeft;
+        idleTimer += Time.deltaTime;
+
+        if(idleTimer>idleDuration)
+        {
+            //negates the value of moving left
+            movingLeft = !movingLeft;
+
+        }
     }
 
     private void MoveInDirection(int _direction)
     {
+        //Resets the Idle Behavior
+        idleTimer = 0;
+
         //Make the enemy face the direction
-        enemy.localScale = new Vector3(Mathf.Abs(initScale.x * _direction),
+        enemy.localScale = new Vector3(initScale.x * _direction,
             initScale.y, initScale.z);
 
         //Move the enemy in the direction 

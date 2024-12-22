@@ -26,8 +26,10 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float _damage)
     {
-        currentHealth = Mathf.Min(currentHealth - _damage, 0 , startingHealth);
+        Debug.Log(currentHealth);
+        currentHealth = Mathf.Min(currentHealth - _damage, startingHealth);
 
+        Debug.Log(currentHealth);
         if(currentHealth > 0)
         {
             //player hurt
@@ -37,7 +39,25 @@ public class Health : MonoBehaviour
         {
             if(!dead)
             {
-                GetComponent<PlayerMovement>().enabled = false;
+                Debug.Log("Dead");
+                //Player 
+                if (GetComponent<PlayerMovement>() != null)
+                {
+                    GetComponent<PlayerMovement>().enabled = false;
+                }
+
+                //Enemy 
+                if(GetComponent<EnemyPatrol>() != null)
+                {
+                    GetComponentInParent<EnemyPatrol>().enabled = false;
+                }
+
+                if(GetComponent<MeleeEnemy>() != null)
+                {
+                    GetComponent<MeleeEnemy>().enabled = false;
+                }
+                
+                
                 dead = true;    
             }
         }
@@ -45,7 +65,8 @@ public class Health : MonoBehaviour
 
     public void AddHealth(float _value)
     {
-        currentHealth = Mathf.Min(currentHealth + _value, 0, startingHealth);
+        currentHealth = Mathf.Min(currentHealth + _value, startingHealth);
+        Debug.Log(currentHealth);
     }
 
     private IEnumerator Invulerability()
