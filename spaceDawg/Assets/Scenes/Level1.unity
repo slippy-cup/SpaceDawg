@@ -698,8 +698,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
-  invulnerabilityDuration: 0
-  numFlashes: 0
+  invulnerabilityDuration: 2
+  numFlashes: 6
 --- !u!1001 &423788951
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1279,7 +1279,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4215
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1408,9 +1408,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6972d74dec785644f9dd45a7004ab79f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCoolDown: 1
+  attackCoolDown: 2
   damage: 1
-  range: 3
+  range: 2
   colliderDistance: 0.6
   boxCollider: {fileID: 1071715253}
   playerLayer:
@@ -2288,7 +2288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85e9767a2bc1bb4e88c037671292f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthValue: 10
+  healthValue: 1
 --- !u!1001 &1983765761
 PrefabInstance:
   m_ObjectHideFlags: 0

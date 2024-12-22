@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3569392448818234337}
   - component: {fileID: 7063736462978922130}
   - component: {fileID: 1651913116099448087}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &709178858797079519
 SpriteRenderer:
@@ -146,10 +146,10 @@ BoxCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 247
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4215
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295

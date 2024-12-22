@@ -62,7 +62,7 @@ public class EnemyPatrol : MonoBehaviour
     private void MoveInDirection(int _direction)
     {
         //Make the enemy face the direction
-        enemy.localScale = new Vector3(Mathf.Abs(initScale.x * _direction),
+        enemy.localScale = new Vector3(initScale.x * _direction,
             initScale.y, initScale.z);
 
         //Move the enemy in the direction 
