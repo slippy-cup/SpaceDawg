@@ -54,14 +54,14 @@ public class Projectile : MonoBehaviour
         hit = true; 
         boxCollider.enabled = false;
 
-        collision = boxCollider;
+        // collision = boxCollider;
 
         if (collision.CompareTag("Player"))
         {
             gameObject.SetActive(false);
         }
 
-        if(collision.CompareTag ("Enemy"))
+        if(collision.CompareTag("Enemy"))
         {
             collision.GetComponent<Health>().TakeDamage(1);
         }

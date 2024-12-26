@@ -61,7 +61,7 @@ public class Health : MonoBehaviour
                 
                 GetComponent<PlayerMovement>().enabled = false;
 
-                dead = true;    
+                dead = true;
             }
         }
     }

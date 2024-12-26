@@ -41,7 +41,6 @@ public class MeleeEnemy : MonoBehaviour
             //Attack hen player is only in sight.
             if (coolDownTimer >= attackCoolDown)
             {
-                Debug.Log("Hit");
                 //Attack
                 coolDownTimer = 0;
                 DamagePlayer();
