@@ -40,6 +40,7 @@ public class Health : MonoBehaviour
             if(!dead)
             {
                 Debug.Log("Dead");
+
                 //Player 
                 if (GetComponent<PlayerMovement>() != null)
                 {
@@ -58,6 +59,8 @@ public class Health : MonoBehaviour
                 }
                 
                 
+                GetComponent<PlayerMovement>().enabled = false;
+
                 dead = true;    
             }
         }
